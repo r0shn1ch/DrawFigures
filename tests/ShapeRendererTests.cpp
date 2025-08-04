@@ -2,7 +2,7 @@
 #include "ShapeRenderer.h"
 #include <glm/glm.hpp>
 
-// Проверим, что для N сегментов эллипса вернётся N+2 точек (центр + N+1)
+// для N сегментов эллипса вернётся N+2 точек (центр + N+1)
 TEST(EllipseGeneration, CorrectCount) {
     ShapeRenderer R;
     for(int segs : {3, 8, 64, 128}) {
@@ -11,7 +11,7 @@ TEST(EllipseGeneration, CorrectCount) {
     }
 }
 
-// Первая точка эллипса должна быть (0,0), вторая — на (1,0)
+// первая точка эллипса должна быть (0,0), вторая — на (1,0)
 TEST(EllipseGeneration, FirstPoints) {
     ShapeRenderer R;
     auto pts = R.generateEllipsePoints(8);
@@ -22,7 +22,7 @@ TEST(EllipseGeneration, FirstPoints) {
     EXPECT_NEAR(pts[1].y, 0.0f, 1e-6f);
 }
 
-// Проверим, что makePolygonVAO возвращает ненулевой VAO и правильный count
+// makePolygonVAO должен возвращать ненулевой VAO и правильный count
 TEST(PolygonVAO, NonZeroAndCount) {
     ShapeRenderer R;
     std::vector<glm::vec2> pts = {
@@ -34,7 +34,7 @@ TEST(PolygonVAO, NonZeroAndCount) {
     EXPECT_EQ(cnt, 5);
 }
 
-// Квадрат: должен давать 6 точек (центр + 5 по углам+замыкание)
+// квадрат должен давать 6 точек (центр + 5 по углам+замыкание)
 TEST(SquareVAO, CountIsSix) {
     ShapeRenderer R;
     GLsizei cnt = 0;
@@ -43,7 +43,7 @@ TEST(SquareVAO, CountIsSix) {
     EXPECT_EQ(cnt, 6);
 }
 
-// Прямоугольник: проверим, что счётчик совпадает с квадратом
+// возврат makeSquareVAO для прямоугольника и квадрата должны совпадать
 TEST(RectangleVAO, CountMatchesSquare) {
     ShapeRenderer R;
     GLsizei c1 = 0, c2 = 0;

@@ -46,7 +46,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "GeometryApp", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "DrawFigures", nullptr, nullptr);
     if (!window) {
         std::cerr << "Ошибка: не удалось создать окно GLFW\n";
         glfwTerminate();
@@ -91,10 +91,10 @@ int main() {
     ShapeRenderer renderer;
 
     GLsizei sqCnt, rectCnt, circCnt, ellCnt, hexCnt;
-    GLuint sqVAO   = renderer.makeSquareVAO(sqCnt);                   // 60x60
-    GLuint rectVAO = renderer.makeRectangleVAO(rectCnt, 100.0f, 50.0f); // 100x50
-    GLuint circVAO = renderer.makeEllipseVAO(64, circCnt);            // 60x60
-    GLuint ellVAO  = renderer.makeEllipseVAO(32, ellCnt);             // 100x40
+    GLuint sqVAO   = renderer.makeSquareVAO(sqCnt);
+    GLuint rectVAO = renderer.makeRectangleVAO(rectCnt, 100.0f, 50.0f);
+    GLuint circVAO = renderer.makeEllipseVAO(64, circCnt);
+    GLuint ellVAO  = renderer.makeEllipseVAO(32, ellCnt);
 
     std::vector<glm::vec2> hexPts(7);
     hexPts[0] = {0.0f, 0.0f};
@@ -104,7 +104,7 @@ int main() {
         float angle = twoPi * (float(i) / 6.0f);
         hexPts[i + 1] = { radius * std::cos(angle), radius * std::sin(angle) };
     }
-    GLuint hexVAO = renderer.makePolygonVAO(hexPts, hexCnt); // ≈120x120
+    GLuint hexVAO = renderer.makePolygonVAO(hexPts, hexCnt);
 
     glm::vec2 posSq   = {100, 500}, velSq   = {50, -40};
     glm::vec2 posRect = {600, 500}, velRect = {-40, -30};

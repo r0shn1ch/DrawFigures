@@ -16,11 +16,15 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(ShapeRendererTests ShapeRendererTests.cpp)
-target_link_libraries(ShapeRendererTests
-    PRIVATE geometry
-            GTest::gtest_main
+add_executable(testDrawFigures
+  ShapeRendererTests.cpp
+)
+
+target_link_libraries(testDrawFigures
+  PRIVATE
+    libGeometry
+    GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(ShapeRendererTests)
+gtest_discover_tests(testDrawFigures)

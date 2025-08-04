@@ -1,6 +1,5 @@
 #include "Shader.h"
 #include <iostream>
-#include <vector>
 #include <unordered_map>
 
 void Shader::checkCompile(GLuint obj, bool isShader) {

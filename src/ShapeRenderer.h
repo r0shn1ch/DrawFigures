@@ -9,18 +9,18 @@ public:
     ShapeRenderer() = default;
     ~ShapeRenderer();
 
-    // Базовый генератор триангл-фана из точек
+    // полигон из точек
     GLuint makePolygonVAO(const std::vector<glm::vec2>& pts, GLsizei& outCount);
 
-    // Эллипс как параметрическая кривая
+    // эллипс
     std::vector<glm::vec2> generateEllipsePoints(int segments) const;
     GLuint makeEllipseVAO(int segments, GLsizei& outCount);
 
-    // Обёртки “готовых” фигур
+    // квадрат, прямоугольник
     GLuint makeSquareVAO(GLsizei& outCount);
     GLuint makeRectangleVAO(GLsizei& outCount, float width, float height);
 
-    // Рисовать любой VAO
+    // произвольный VAO
     void drawVAO(GLuint vao, GLsizei count,
                  glm::vec2 pos, float angle,
                  glm::vec2 scale, glm::vec3 color,
