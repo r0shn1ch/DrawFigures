@@ -1,19 +1,21 @@
+cmake_minimum_required(VERSION 3.15)
+
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(glm REQUIRED)
 
-add_library(libGeometry STATIC
+add_executable(DrawFigures
+    main.cpp
+    Renderer.cpp
     Shader.cpp
-    ShapeRenderer.cpp
-)
-target_include_directories(libGeometry PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(libGeometry PUBLIC
-    glfw
-    ${OPENGL_LIBRARIES}
-    GLEW::GLEW
-    glm::glm
+    IShape.h
 )
 
-add_executable(DrawFiguresApp main.cpp)
-target_link_libraries(DrawFiguresApp PRIVATE libGeometry)
+target_include_directories(DrawFigures PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(DrawFigures PRIVATE
+    glfw
+    GLEW::GLEW
+    ${OPENGL_LIBRARIES}
+    glm::glm
+)
